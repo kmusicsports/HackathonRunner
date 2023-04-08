@@ -43,7 +43,7 @@
   - Visual Studio Code(フロントエンド, README等)
   - SpringToolSuite4(バックエンド)
   - digrams.net(クラス図)
-  - Figma(ワイヤーフレーム, プロトタイプ, アプリアイコン)
+  - Figma(UIデザイン)
   - Notion(ドキュメント)
 
 ## 役割分担
