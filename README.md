@@ -5,6 +5,11 @@
 
 **URL**: 公開準備中
 
+## チームJavalerのHackathonRunner
+このソフトウェアは、私が所属する[チームJavaler](https://github.com/Javaler/)において、2022年4月から2023年3月まで開発されていたアプリを、個人で継続開発しているものです。（もちろん、メンバーから許可は得ています。）
+- [チームJavalerで開発したHackathonRunner](https://github.com/Javaler/HackathonRunner)
+- [チームJavalerでの開発を振り返った記事](https://qiita.com/NMS/items/4d43e3acb02d29cc6cc4)
+
 ## 仕様/機能一覧
 
 ### 診断機能
