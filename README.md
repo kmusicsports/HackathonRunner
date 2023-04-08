@@ -37,9 +37,6 @@
     - **Maven**
     - **Spring Boot**
     - **[HackathonRunner-Analysis-API](https://github.com/Javaler/HackathonRunner-Analysis-API)**
-- **インフラ**
-  - **Azure App Service**
-  - **Azure Database for PostgreSQL**
 - **バージョン/ソースコード管理**
   - **Git, GitHub**
 - その他使用ツール
