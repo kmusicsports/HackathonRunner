@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HackathonRunner</title>
+
+    <!--bootstrap css-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/bootstrap_hackathon_runner_theme_color.css}"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" th:href="@{/css/home.css}"/>
+
+    <link rel="icon" th:href="@{/icons/favicon.ico}" id="favicon">
+    <link rel="apple-touch-icon" sizes="180x180" th:href="@{/icons/app_icon.svg}">
+</head>
+<body>
+    <nav th:replace="fragments :: navbar_area"></nav>
+
+    <div class="bg-image" id="eye-catch">
+        <div class="text-center" id="eye-catch-text">
+            <span class="fs-1">Welcome<br>to<br><em>HackathonRunner</em></span>
+            <p class="fs-6">あなたにぴったりのハッカソンを見つけませんか？</p>
+            <a class="btn rounded-pill btn-primary mx-2 p-3 btn-lg text-center" th:href="@{/showQuestion}">さっそく診断する</a>
+        </div>
+    </div>
+
+    <div class="w-75 mx-auto my-5">
+        <p class="fs-2" id="introduction-text">こんな不安を解決！</p>
+        <hr class="bg-primary" id="introduction-text-hr">
+        <div class="row mb-5">
+            <div class="col-12 col-sm-7 mt-sm-5">
+                <ul>
+                    <li>自分のレベルでもハッカソンに参加して大丈夫なの？</li>
+                    <li>ハッカソン当日までに何を準備しておけばいいの？</li>
+                    <li>ハッカソン当日にどう振舞えばいいの？</li>
+                </ul>
+            </div>
+            <div class="col-12 col-sm-5">
+                <img th:src="@{/icons/confused-man.svg}" width="250px" height="250px">
+            </div>
+        </div>
+        <div class="left-side-introduction">
+            <p class="fs-1 mb-5 text-primary">診断</p>
+            <p class="fs-2 mb-2">あなたを分析することでぴったりのハッカソンと出逢える！</p>
+            <p class="fs-6 mt-3 mb-5">ハッカソン経験やチーム開発経験、Gitの使用経験など、選択式の質問に答えるだけで<br>
+            あなたと同じレベルの人が参加したハッカソンを見つけることができます。</p>
+            <a class="btn rounded-pill btn-primary mx-2 btn-lg text-center" th:href="@{/showQuestion}">診断する</a>
+        </div>
+        <div id="post-introduction">
+            <p class="fs-1 mb-5 text-primary">投稿</p>
+            <p class="fs-2 mb-2">ハッカソンで開発した作品をアピールしよう！</p>
+            <p class="fs-6 mt-3 mb-5">参加したハッカソンの情報や作品の情報を投稿することで、ハッカソンを盛り上げるだけでなく、<br>
+            自分の作品を宣伝することができます。<br>
+            <em>HackathonRunner</em>は投稿が多くなるほど、ぴったりのハッカソンをおすすめするようになります。</p>
+            <a class="btn rounded-pill btn-primary mx-2 btn-lg text-center" th:href="@{/showPostForm}">投稿する</a>
+        </div>
+        <div class="left-side-introduction">
+            <p class="fs-1 mb-5 text-primary">チームメンバー募集</p>
+            <p class="fs-2 mb-2">チームでの参加が推奨・必須のハッカソンにも気軽に参加しよう！</p>
+            <p class="fs-6 mt-3 mb-5">開発仲間が少ない人や、開発仲間の都合が合わず、チームでの参加が難しい人でも、<br>
+            チームメンバーを募集し、事前にチームを組んで参加できるようになります。</p>
+            <a class="btn rounded-pill btn-primary mx-2 btn-lg text-center" th:href="@{/showRecruitmentForm}">募集する</a>
+        </div>
+    </div>
+    <div class="w-75 text-center mx-auto my-5">
+        <p class="fs-3">これまでの投稿</p>
+        <hr class="bg-primary">
+    </div>
+
+    <!-- bootstrap Carousel -->
+    <!-- Post -->
+    <div id="carouselExampleIndicators1" class="carousel slide" data-bs-interval="false" data-bs-wrap="false">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <!-- Post -->
+        <form th:action="@{/}" method="get">
+            <div class="carousel-inner">
+                <div th:if="${status.index} == 0" class="carousel-item active" th:each="post, status : ${postList}">
+                    <div class="list-group w-75 mx-auto my-4">
+                        <button type="submit" th:formaction="@{/Post/__${post.id}__}" class="list-group-item list-group-item-action">
+                            <div class="my-3">
+                                <img th:src="@{/icons/app_icon.svg}" class="rounded-circle" width="56px" height="56px"/>
+                                <span class="fw-bold fs-3 ms-2" th:text="${post.name}"></span>
+                            </div>
+                            <table class="table table-borderless">
+                                <tr th:switch="${post.hackathon}">
+                                    <th class="w-50" th:text="#{text.hackathon}"></th>
+                                    <td th:case="0" th:text="#{option.no}"></td>
+                                    <td th:case="1" th:text="#{option.hackathon_yes_1}"></td>
+                                    <td th:case="2" th:text="#{option.hackathon_yes_2}"></td>
+                                </tr>
+                                <tr th:switch="${post.portfolio}">
+                                    <th class="w-50" th:utext="#{text.portfolio}"></th>
+                                    <td th:case="0" th:text="#{option.no}"></td>
+                                    <td th:case="1" th:text="#{option.portfolio_yes_1}"></td>
+                                    <td th:case="2" th:text="#{option.portfolio_yes_2}"></td>
+                                    <td th:case="3" th:text="#{option.portfolio_yes_3}"></td>
+                                </tr>
+                                <tr>
+                                    <th class="w-50" th:text="#{label.event}"></th>
+                                    <td th:text="${post.eventInfo}"></td>
+                                </tr>
+                                <tr>
+                                    <th class="w-50" th:text="#{label.work}"></th>
+                                    <td th:text="${post.workInfo}"></td>
+                                </tr>
+                            </table>
+                        </button>
+                    </div>
+                </div>
+                <div th:if="${status.index} != 0" class="carousel-item" th:each="post, status : ${postList}">
+                    <div class="list-group w-75 mx-auto my-4">
+                        <button type="submit" th:formaction="@{/Post/__${post.id}__}" class="list-group-item list-group-item-action">
+                            <div class="my-3">
+                                <img th:src="@{/icons/app_icon.svg}" class="rounded-circle" width="56px" height="56px"/>
+                                <span class="fw-bold fs-3 ms-2" th:text="${post.name}"></span>
+                            </div>
+                            <table class="table table-borderless">
+                                <tr th:switch="${post.hackathon}">
+                                    <th class="w-50" th:text="#{text.hackathon}"></th>
+                                    <td th:case="0" th:text="#{option.no}"></td>
+                                    <td th:case="1" th:text="#{option.hackathon_yes_1}"></td>
+                                    <td th:case="2" th:text="#{option.hackathon_yes_2}"></td>
+                                </tr>
+                                <tr th:switch="${post.portfolio}">
+                                    <th class="w-50" th:utext="#{text.portfolio}"></th>
+                                    <td th:case="0" th:text="#{option.no}"></td>
+                                    <td th:case="1" th:text="#{option.portfolio_yes_1}"></td>
+                                    <td th:case="2" th:text="#{option.portfolio_yes_2}"></td>
+                                    <td th:case="3" th:text="#{option.portfolio_yes_3}"></td>
+                                </tr>
+                                <tr>
+                                    <th class="w-50" th:text="#{label.event}"></th>
+                                    <td th:text="${post.eventInfo}"></td>
+                                </tr>
+                                <tr>
+                                    <th class="w-50" th:text="#{label.work}"></th>
+                                    <td th:text="${post.workInfo}"></td>
+                                </tr>
+                            </table>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon bg-secondary" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide="next">
+            <span class="carousel-control-next-icon bg-secondary" aria-hidden="false"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <div class="text-center">
+        <a class="btn rounded-pill mb-5 btn-primary btn-lg" th:href="@{/showPostList}">もっと見る</a>
+    </div>
+
+    <!-- Recruitment -->
+    <div class="w-75 text-center mx-auto my-5">
+        <p class="fs-3">チームメンバー募集</p>
+        <hr class="bg-primary">
+    </div>
+    <div id="carouselExampleIndicators2" class="carousel slide" data-bs-interval="false" data-bs-wrap="false">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <form th:action="@{/}" method="get">
+            <div class="carousel-inner">
+                <div th:if="${status.index} == 0" class="carousel-item active" th:each="recruitment, status : ${recruitmentList}">
+                    <div class="list-group w-75 mx-auto my-4">
+                        <div class="list-group-item list-group-item-action">
+                            <div class="container my-3">
+                                <div class="row">
+                                    <div class="col-12 col-sm-6">
+                                        <img th:src="@{/icons/app_icon.svg}" class="rounded-circle" width="56px" height="56px"/>
+                                        <span class="fw-bold fs-3 ms-2" th:text="${recruitment.name}"></span>
+                                    </div>
+                                    <div class="col-12 col-sm-6 d-grid gap-2 d-md-flex justify-content-md-end">
+                                        <p class="my-3 d-flex btn-lg text-center border border-1 border-primary">
+                                            <span th:text="${recruitment.deadline}"></span>
+                                            まで募集中！
+                                        </p>
+                                    </div>
+                                    <table class="table table-borderless">
+                                        <tr>
+                                            <th class="w-50" th:text="#{label.eventInfo}"></th>
+                                            <td th:text="${recruitment.eventInfo}"></td>
+                                        </tr>
+                                        <tr>
+                                            <th class="w-50" th:text="#{label.comment}"></th>
+                                            <td th:text="${recruitment.comment}"></td>
+                                        </tr>
+                                        <tr>
+                                            <th class="w-50" th:text="#{label.memberNum}"></th>
+                                            <td th:text="${recruitment.memberNum} + 人"></td>
+                                        </tr>
+                                        <tr>
+                                            <th class="w-50" th:text="#{label.contactInfo}"></th>
+                                            <td th:text="${recruitment.contactInfo}"></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <button type="button" class="btn btn-outline-primary mx-2 btn-lg text-center popover-button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="bottom" data-bs-content="連絡先から募集者と連絡を取ろう！">応募する</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div th:if="${status.index} != 0" class="carousel-item" th:each="recruitment, status : ${recruitmentList}">
+                    <div class="list-group w-75 mx-auto my-4">
+                        <div class="list-group-item list-group-item-action">
+                            <div class="container my-3">
+                                <div class="row">
+                                    <div class="col-12 col-sm-6">
+                                        <img th:src="@{/icons/app_icon.svg}" class="rounded-circle" width="56px" height="56px"/>
+                                        <span class="fw-bold fs-3 ms-2" th:text="${recruitment.name}"></span>
+                                    </div>
+                                    <div class="col-12 col-sm-6 d-grid gap-2 d-md-flex justify-content-md-end">
+                                        <p class="my-3 d-flex btn-lg text-center border border-1 border-primary">
+                                            <span th:text="${recruitment.deadline}"></span>
+                                            まで募集中！
+                                        </p>
+                                    </div>
+                                    <table class="table table-borderless">
+                                        <tr>
+                                            <th class="w-50" th:text="#{label.eventInfo}"></th>
+                                            <td th:text="${recruitment.eventInfo}"></td>
+                                        </tr>
+                                        <tr>
+                                            <th class="w-50" th:text="#{label.comment}"></th>
+                                            <td th:text="${recruitment.comment}"></td>
+                                        </tr>
+                                        <tr>
+                                            <th class="w-50" th:text="#{label.memberNum}"></th>
+                                            <td th:text="${recruitment.memberNum} + 人"></td>
+                                        </tr>
+                                        <tr>
+                                            <th class="w-50" th:text="#{label.contactInfo}"></th>
+                                            <td th:text="${recruitment.contactInfo}"></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <button type="button" class="btn btn-outline-primary mx-2 btn-lg text-center popover-button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="bottom" data-bs-content="連絡先から募集者と連絡を取ろう！">応募する</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon bg-secondary" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide="next">
+            <span class="carousel-control-next-icon bg-secondary" aria-hidden="false"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <div class="text-center">
+        <a class="btn rounded-pill mb-5 btn-primary btn-lg" th:href="@{/showRecruitmentList}">もっと見る</a>
+    </div>
+
+    <!--bootstrap js-->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
+    <script th:src="@{/js/home.js}"></script>
+
+</body>
+</html>
