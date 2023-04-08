@@ -3,7 +3,21 @@
 
 <img src="https://user-images.githubusercontent.com/79685987/197310366-d45ea75e-e970-441c-88f5-f57601a65ef6.jpg">
 
-**URL(公開終了)**: ~~[https://hackathonrunner.azurewebsites.net](https://hackathonrunner.azurewebsites.net)~~
+**URL**: 公開準備中
+
+## チームJavalerのHackathonRunner
+このソフトウェアは、私が所属する[チームJavaler](https://github.com/Javaler/)において、2022年4月から2023年3月まで開発されていたアプリを、個人で継続開発しているものです。（もちろん、メンバーから許可は得ています。）
+- [チームJavalerで開発したHackathonRunner](https://github.com/Javaler/HackathonRunner)
+- [チームJavalerでの開発を振り返った記事](https://qiita.com/NMS/items/4d43e3acb02d29cc6cc4)
+
+### 個人開発で改変を行ったファイル
+- 変更
+  - [README.md](https://github.com/kmusicsports/HackathonRunner/blob/main/README.md)
+  - .gitignore
+- 削除
+  - .github/workflows/deploy-to-heroku.yml
+  - src/main/resources/twitter4j.properties
+  - git
 
 ## 仕様/機能一覧
 
@@ -37,34 +51,11 @@
     - **Maven**
     - **Spring Boot**
     - **[HackathonRunner-Analysis-API](https://github.com/Javaler/HackathonRunner-Analysis-API)**
-- **インフラ**
-  - **Azure App Service**
-  - **Azure Database for PostgreSQL**
 - **バージョン/ソースコード管理**
   - **Git, GitHub**
 - その他使用ツール
   - Visual Studio Code(フロントエンド, README等)
   - SpringToolSuite4(バックエンド)
   - digrams.net(クラス図)
-  - Figma(ワイヤーフレーム, プロトタイプ, アプリアイコン)
+  - Figma(UIデザイン)
   - Notion(ドキュメント)
-
-## 役割分担
-- **リーダー・マネジメント(ドキュメント、タスク等)**
-  1. kmusicsports - Naoki Kajitani
-- **デザイン**
-  1. IkedaAkihira - Ikeda Akihira
-  2. Utricularor
-  3. kmusicsports - Naoki Kajitani
-- **フロントエンド**
-  1. IkedaAkihira - Ikeda Akihira
-  2. kmusicsports - Naoki Kajitani
-  3. Utricularor
-- **バックエンド**
-  1. kmusicsports - Naoki Kajitani
-  2. YutaSugino - Yut@
-- **インフラ**
-  1. YutaSugino - Yut@
-- **類似ユーザーの投稿推薦API([HackathonRunner-Analysis-API](https://github.com/Javaler/HackathonRunner-Analysis-API))**
-  1. Utricularor
-
