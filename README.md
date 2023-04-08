@@ -10,6 +10,15 @@
 - [チームJavalerで開発したHackathonRunner](https://github.com/Javaler/HackathonRunner)
 - [チームJavalerでの開発を振り返った記事](https://qiita.com/NMS/items/4d43e3acb02d29cc6cc4)
 
+### 個人開発で改変を行ったファイル
+- 変更
+  - [README.md](https://github.com/kmusicsports/HackathonRunner/blob/main/README.md)
+  - .gitignore
+- 削除
+  - .github/workflows/deploy-to-heroku.yml
+  - src/main/resources/twitter4j.properties
+  - git
+
 ## 仕様/機能一覧
 
 ### 診断機能
