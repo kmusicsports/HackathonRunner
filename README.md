@@ -15,9 +15,14 @@
 
 ### 個人開発で改変を行ったファイル
 
+- 追加
+  - docs/pull_request_template.md
 - 変更
   - [README.md](https://github.com/kmusicsports/HackathonRunner/blob/main/README.md)
   - .gitignore
+  - src/main/resources/templates/questionForm.html
+  - src/main/resources/templates/questionResult.html
+  - src/main/java/com/example/demo/controller/QuestionController.java
 - 削除
   - .github/workflows/deploy-to-heroku.yml
   - src/main/resources/twitter4j.properties
