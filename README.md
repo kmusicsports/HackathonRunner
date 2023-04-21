@@ -13,20 +13,28 @@
 - [チームJavalerで開発したHackathonRunner](https://github.com/Javaler/HackathonRunner)
 - [チームJavalerでの開発を振り返った記事](https://qiita.com/NMS/items/4d43e3acb02d29cc6cc4)
 
-### 個人開発で改変を行ったファイル
-
-- 追加
-  - docs/pull_request_template.md
-- 変更
-  - [README.md](https://github.com/kmusicsports/HackathonRunner/blob/main/README.md)
-  - .gitignore
-  - src/main/resources/templates/questionForm.html
-  - src/main/resources/templates/questionResult.html
-  - src/main/java/com/example/demo/controller/QuestionController.java
-- 削除
-  - .github/workflows/deploy-to-heroku.yml
-  - src/main/resources/twitter4j.properties
-  - git
+個人開発で改変を行ったファイルは以下の通りです。
+```
+HackathonRunner
+ ├ README.md  # 変更
+ ├ git  # 削除
+ ├ .gitignore  # 変更
+ ├ .github/workflows
+ │  └ deploy-to-heroku.yml  # 削除
+ ├ docs
+ │  └ pull_request_template.md  # 追加
+ └ src/main
+    ├ resources
+    │   ├ twitter4j.properties  # 削除
+    │   └ templates
+    │       ├ fragments.html  # 変更
+    │       ├ home.html  # 変更
+    │       ├ questionForm.html  # 変更
+    │       └ questionResult.html  # 変更
+    └ java/com/example/demo/controller
+        ├ QuestionController.java  # 変更
+        └ RecruitmentController.java  # 削除
+```
 
 ## 仕様/機能一覧
 
