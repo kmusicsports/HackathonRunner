@@ -30,9 +30,15 @@ HackathonRunner
     │       ├ fragments.html  # 変更
     │       ├ home.html  # 変更
     │       ├ questionForm.html  # 変更
-    │       └ questionResult.html  # 変更
+    │       ├ questionResult.html  # 変更
+    │       ├ recruitmentForm.html  # 削除
+    │       └ recruitmentList.html  # 削除
     └ java/com/example/demo/controller
+        ├ HomeController.java  # 変更
         ├ QuestionController.java  # 変更
+        ├ Recruitment.java  # 削除
+        ├ RecruitmentForm.java  # 削除
+        ├ RecruitmentRepository.java  # 削除
         └ RecruitmentController.java  # 削除
 ```
 
