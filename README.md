@@ -16,30 +16,54 @@
 個人開発で改変を行ったファイルは以下の通りです。
 ```
 HackathonRunner
- ├ README.md  # 変更
- ├ git  # 削除
- ├ .gitignore  # 変更
+ ├ README.md  # Chnage
+ ├ git  # Remove
+ ├ .gitignore  # Chnage
  ├ .github/workflows
- │  └ deploy-to-heroku.yml  # 削除
+ │  └ deploy-to-heroku.yml  # Remove
  ├ docs
- │  └ pull_request_template.md  # 追加
+ │  └ pull_request_template.md  # Add
  └ src/main
-    ├ resources
-    │   ├ twitter4j.properties  # 削除
-    │   └ templates
-    │       ├ fragments.html  # 変更
-    │       ├ home.html  # 変更
-    │       ├ questionForm.html  # 変更
-    │       ├ questionResult.html  # 変更
-    │       ├ recruitmentForm.html  # 削除
-    │       └ recruitmentList.html  # 削除
-    └ java/com/example/demo/controller
-        ├ HomeController.java  # 変更
-        ├ QuestionController.java  # 変更
-        ├ Recruitment.java  # 削除
-        ├ RecruitmentForm.java  # 削除
-        ├ RecruitmentRepository.java  # 削除
-        └ RecruitmentController.java  # 削除
+    ├ java/com/example/demo
+    │   ├ controller
+    │   │   ├ HomeController.java  # Chnage
+    │   │   ├ PostController.java  # Remove
+    │   │   ├ QuestionController.java  # Chnage
+    │   │   └ RecruitmentController.java  # Remove
+    │   ├ dao
+    │   │   ├ PostDao.java  # Remove
+    │   │   └ PostDaoImpl.java  # Remove
+    │   ├ dto
+    │   │   └ ResponseBody.java  # Remove
+    │   ├ entity
+    │   │   ├ Post.java  # Remove
+    │   │   └ Recruitment.java  # Remove
+    │   ├ form
+    │   │   ├ PostForm.java  # Remove
+    │   │   ├ PostQuery.java  # Remove
+    │   │   └ RecruitmentForm.java  # Remove
+    │   ├ repository
+    │   │   ├ PostRepository.java  # Remove
+    │   │   └ RecruitmentRepository.java  # Remove
+    │   └ service
+    │       └ PostService.java  # Remove
+    └ resources
+        ├ twitter4j.properties  # Remove
+        ├ static
+        │   ├ css
+        │   │   └ postForm.css
+        │   └ js
+        │       └ postForm.js
+        └ templates
+            ├ fragments.html  # Chnage
+            ├ home.html  # Chnage
+            ├ postDetail.html  # Remove
+            ├ postForm.html  # Remove
+            ├ postList.html  # Remove
+            ├ questionForm.html  # Chnage
+            ├ questionResult.html  # Chnage
+            ├ recruitmentForm.html  # Remove
+            └ recruitmentList.html  # Remove
 ```
 
 ## 仕様/機能一覧
