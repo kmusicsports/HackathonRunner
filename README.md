@@ -16,8 +16,9 @@
 個人開発で改変を行ったファイルは以下の通りです。
 ```
 HackathonRunner
- ├ README.md  # Chnage
  ├ git  # Remove
+ ├ README.md  # Chnage
+ ├ pom.xml  # Chnage
  ├ .gitignore  # Chnage
  ├ .github/workflows
  │  └ deploy-to-heroku.yml  # Remove
